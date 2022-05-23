@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <title>GitFav</title>
+    <script src="./JS/main.js" type="module" defer></script>
 </head>
 <body>
     <div id="page-container">
@@ -23,7 +24,7 @@
         </header>
         <main>
             <div class="tbody-wrap">
-            <table>
+            <table class="">
                 <thead class="fixed">
                     <tr>
                         <th>Usuário</th>
@@ -47,7 +48,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -63,7 +64,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -79,7 +80,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -95,7 +96,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -111,7 +112,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -127,7 +128,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -143,7 +144,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -159,7 +160,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -175,7 +176,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -191,7 +192,7 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                         <tr>
@@ -207,12 +208,27 @@
                             <td>123</td>
                             <td>1234</td>
                             <td>
-                                <button>Remover</button>
+                                <button class="remove">Remover</button>
                             </td>
                         </tr>
                     </tbody>
-                </div>
             </table>
+
+            <table class="empty-table hide">
+                    <thead class="fixed">
+                        <tr>
+                            <th>Usuário</th>
+                            <th>Respositorios</th>
+                            <th>Followers</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+            </table>
+            <div class="empty-img">
+                <img src="./images/BigStar.svg" alt=""> Nenhum favorito ainda
+            </div>
+         </div>
+            
         </main>
     </div>
     

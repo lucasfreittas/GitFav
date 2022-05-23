@@ -84,6 +84,7 @@ header input{
 }
 
 header button{
+    display: flex;
     background-color: var(--details-color);
     width: 10rem;
     height: 3rem;
@@ -95,10 +96,14 @@ header button{
     font-style: normal;
     font-weight: 400;
     font-size: 1rem;
-    line-height: 100%;
-    color: white;
-}
 
+    color: white;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}
 
 
 table{
@@ -183,12 +188,51 @@ table tr:nth-child(even){
 .tbody-wrap{
 
     width: 80rem;
+
     margin: 8.5rem 0;
     max-height: 50rem;
     overflow-y: auto;
     overflow-x: visible;
     border-radius: 1rem;
-    
 
 }
 
+.remove{
+    color: var(--red-color);
+    background: none;
+    border: none;
+}
+
+.remove:hover{
+    cursor: pointer;
+    filter: brightness(4.1);
+}
+
+.hide{
+    display: none;
+}
+
+.empty-table{
+    border: 1px solid #4A808C;
+}
+
+.empty-img{
+    border: 1px solid #4A808C;
+    display: flex;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    background-color: #06181c;
+    height: 30rem;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 2.5rem;
+    color: #4E5455;
+
+}
+.empty-img img{
+    width: 13rem;
+}
