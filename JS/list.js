@@ -1,29 +1,76 @@
+import { GithubUser } from "./GithubUser.js"
+
+
 export class List{
     constructor (root){
         this.root = document.querySelector(root);
         this.tbody = document.querySelector('#tb')
-        this.entries = [
-            {
-                login: 'maykbrito',
-                name: 'Mayk Brito',
-                public_repos: '76',
-                followers: '120000',
-            },
-            {
-                login: 'diego3g',
-                name: 'Diego Fernandes',
-                public_repos: '150',
-                followers: '122330',
-            },
-        ];
+        this.load()
+        this.update()
+        this.onadd()
+    }
 
-     this.update()
+
+    load(){
+        this.entries = JSON.parse(localStorage.getItem('@github-favorites:')) || []
+    }
+    
+    save(){
+        localStorage.setItem('@github-favorites:', JSON.stringify(this.entries))
+    }
+
+    async add(username){
+        try{
+            const userExists = this.entries.find(entry => entry.login === username);
+            if(userExists){
+                throw new Error ('Usuário já cadastrado')
+            }
+
+            const user = await GithubUser.search(username)
+
+            if(user.login === undefined){
+                throw new Error('Usuário não encontrado!')
+            }
+
+            this.entries = [user, ...this.entries]
+            this.update()
+            this.save()
+
+        }catch(error) {
+            alert(error.message)
+        }
+    }
+
+    onadd(){
+        const addButton = this.root.querySelector('.search-button')
+        addButton.onclick = () => {
+            const { value } = this.root.querySelector('.search-input')
+
+            this.add(value)
+        }
     }
 
     update(){
         this.clearAll()
         this.dataUpdate()
+        this.empty()
     }
+
+    empty(){
+        const empty = this.root.querySelector('.empty-table');
+        const fill = this.root.querySelector('.fill');
+
+        if (this.entries.length === 0){
+            empty.classList.remove('hide')
+            fill.classList.add('hide')
+        } else{
+            empty.classList.add('hide')
+            fill.classList.remove('hide')
+        }
+        
+        
+    }
+
 
     dataUpdate(){
         this.entries.forEach( user => {
@@ -37,10 +84,23 @@ export class List{
             row.querySelector('.repositories').textContent = user.public_repos;
             row.querySelector('.followers').textContent = user.followers;
 
-
+            row.querySelector('.remove').onclick = () => {
+                const isOk = confirm('Você tem certeza que deseja excluir esse contato?')
+                if(isOk){
+                    this.delete(user)
+                }
+            }
 
             this.tbody.append(row)
         })
+    }
+
+    
+    delete(user){
+        const filteredEntries = this.entries.filter((entry) => entry.login !== user.login);
+        this.entries = filteredEntries;
+        this.update()
+        this.save()
     }
 
     newEntry(){
@@ -63,6 +123,7 @@ export class List{
     `
         return tr
     }
+
 
     clearAll(){
         const tr = this.tbody.querySelectorAll('tr');

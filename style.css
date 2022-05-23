@@ -105,6 +105,11 @@ header button{
     gap: 0.5rem;
 }
 
+header button:hover{
+    filter: brightness(1.5);
+    cursor: pointer;
+}
+
 
 table{
  
