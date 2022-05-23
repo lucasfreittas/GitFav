@@ -1,3 +1,3 @@
-import * as list from "./list.js"
+import { List } from './list.js'
 
-list.ola()
+new List("#app")

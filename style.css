@@ -216,6 +216,11 @@ table tr:nth-child(even){
     border: 1px solid #4A808C;
 }
 
+.empty-table table{
+    border-radius: 0;
+    border: none;
+}
+
 .empty-img{
     border: 1px solid #4A808C;
     display: flex;
